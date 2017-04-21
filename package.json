@@ -1,0 +1,16 @@
+{
+  "name": "node-rest-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {},
+  "author": "Jeremy CURNY",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^4.9.5",
+    "restify": "^4.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
