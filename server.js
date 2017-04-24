@@ -1,21 +1,15 @@
+'use strict';
+
 // Dependencies
 var mongoose = require('mongoose');
 var restify = require('restify');
 
-// DB connection
-mongoose.connect('mongodb://localhost/node-rest-api');
-
-// Models
+// App
+var confs = require(__dirname + '/src/confs')();
 var models = require(__dirname + '/src/models')(mongoose);
-
-// Controllers
 var controllers = require(__dirname + '/src/controllers')(models);
+var server = require(__dirname + '/src/server')(confs, mongoose, restify);
+var routes = require(__dirname + '/src/routes')(server, controllers);
 
-// Server
-var server = require(__dirname + '/src/server')(restify);
-server.listen(80, function () {
-    console.log("server started :80");
-});
-
-// Routes
-require(__dirname + '/src/routes')(server, controllers);
+// Run
+server.run();

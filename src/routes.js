@@ -2,6 +2,8 @@
 
 module.exports = function(server, controllers) {
 
-    require(__dirname + '/route/user')(server, controllers);
+    return {
+        user: require(__dirname + '/route/user')(server, controllers)
+    }
 
 }
