@@ -2,9 +2,14 @@
 
 module.exports = function(mongoose) {
 
-    return mongoose.model('User', new mongoose.Schema({
-        email: { type: String, required: true},
-        password: { type: String, required: true}
-    }));
+    var userSchema = new mongoose.Schema({
+        email: { type: String, required: true, lowercase: true, index: true },
+        password: { type: String, required: true},
+        profile: {
+            nickname: { type: String, index: { unique: true } }
+        }
+    });
+
+    return mongoose.model('User', userSchema);
 
 }
